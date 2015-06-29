@@ -23,6 +23,16 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+   FB.api(
+       "1516692558607863/albums",
+       function (response) {
+         if (response && !response.error) {
+           console.log(response);
+           /* handle the result */
+         }
+       }
+   );
 </script>
 <div
     class="fb-like"
@@ -30,17 +40,6 @@
     data-width="450"
     data-show-faces="true">
 </div>
-<script>
-FB.api(
-    "1516692558607863/albums",
-    function (response) {
-      if (response && !response.error) {
-        console.log(response);
-        /* handle the result */
-      }
-    }
-);
-</script>
 <h1>台灣人芬蘭協會FAQ</h1>
 <h4>Search = Ctrl(⌘) + F</h4>
 <iframe seamless width="70%" height="650px" src="https://docs.google.com/document/d/1soT3Ql_4065yo_8yRVOkF5Uqf_OUxgIB1cFeD-AModg/pub?embedded=true"></iframe>
