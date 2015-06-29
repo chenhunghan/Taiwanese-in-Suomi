@@ -14,6 +14,16 @@
       xfbml      : true,
       version    : 'v2.3'
     });
+
+    FB.api(
+        "1516692558607863/albums",
+        function (response) {
+          if (response && !response.error) {
+            console.log(response);
+            /* handle the result */
+          }
+        }
+    );
   };
 
   (function(d, s, id){
@@ -24,15 +34,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-   FB.api(
-       "1516692558607863/albums",
-       function (response) {
-         if (response && !response.error) {
-           console.log(response);
-           /* handle the result */
-         }
-       }
-   );
+
 </script>
 <div
     class="fb-like"
