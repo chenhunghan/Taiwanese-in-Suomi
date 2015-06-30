@@ -7,6 +7,19 @@
     <script src="css/main.css"></script>
 </head>
 <body>
+
+<h1>台灣人芬蘭協會FAQ</h1>
+<div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
+</div>
+
+<h4>Search = Ctrl(⌘) + F</h4>
+<span>最後修訂於：</span><span id="date"></span>
+<div id="text"></div>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -33,17 +46,32 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
-
 </script>
-<div
-    class="fb-like"
-    data-share="true"
-    data-width="450"
-    data-show-faces="true">
-</div>
-<h1>台灣人芬蘭協會FAQ</h1>
-<h4>Search = Ctrl(⌘) + F</h4>
-<iframe seamless width="70%" height="650px" src="https://docs.google.com/document/d/1soT3Ql_4065yo_8yRVOkF5Uqf_OUxgIB1cFeD-AModg/pub?embedded=true"></iframe>
+
+<script type="text/javascript">
+    var clientId = '837050751313';
+    var apiKey = 'AIzaSyCBYlVBX9i72IroN8H-j_P7TrU-SsekITI';
+    function init(){
+        gapi.client.setApiKey(apiKey);
+        gapi.client.load('drive', 'v2', function(){
+            request = gapi.client.drive.files.get({
+                'fileId': '16Yv5zl1DleEmqwRZz654rG836EPZcYJ76PDS5Wc7Kds'
+            });
+            request.execute(function(res){
+                document.getElementById("date").innerHTML = res.modifiedDate;
+                var htmlurl = res.exportLinks['text/html'];
+                var xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("GET", htmlurl, false);
+                xmlhttp.send();
+                document.getElementById("date").innerHTML = res.modifiedDate;
+                document.getElementById("text").innerHTML = xmlhttp.responseText;
+            })
+        });
+
+    };
+</script>
+
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
+
 </body>
 </html>
